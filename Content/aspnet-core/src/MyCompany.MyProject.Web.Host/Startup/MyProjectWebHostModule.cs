@@ -3,12 +3,15 @@ using Microsoft.Extensions.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using MyCompany.MyProject.Configuration;
+using Abp.Hangfire;
+using Abp.Hangfire.Configuration;
 
 namespace MyCompany.MyProject.Web.Host.Startup
 {
     [DependsOn(
+        typeof(AbpHangfireAspNetCoreModule),
        typeof(MyProjectWebCoreModule))]
-    public class MyProjectWebHostModule: AbpModule
+    public class MyProjectWebHostModule : AbpModule
     {
         private readonly IHostingEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
@@ -22,6 +25,8 @@ namespace MyCompany.MyProject.Web.Host.Startup
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(MyProjectWebHostModule).GetAssembly());
+            
+            Configuration.BackgroundJobs.UseHangfire();
         }
     }
 }

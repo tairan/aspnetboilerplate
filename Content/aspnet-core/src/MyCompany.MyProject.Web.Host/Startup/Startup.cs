@@ -14,8 +14,10 @@ using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
 using MyCompany.MyProject.Configuration;
 using MyCompany.MyProject.Identity;
-
 using Abp.AspNetCore.SignalR.Hubs;
+using Hangfire;
+using Abp.Hangfire;
+using MyCompany.MyProject.Authorization;
 
 namespace MyCompany.MyProject.Web.Host.Startup
 {
@@ -76,6 +78,11 @@ namespace MyCompany.MyProject.Web.Host.Startup
                 });
             });
 
+            services.AddHangfire(config =>
+            {
+                config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Default"));
+            });
+
             // Configure Abp and Dependency Injection
             return services.AddAbp<MyProjectWebHostModule>(
                 // Configure Log4Net logging
@@ -112,6 +119,12 @@ namespace MyCompany.MyProject.Web.Host.Startup
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseHangfireServer();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new AbpHangfireAuthorizationFilter(PermissionNames.Pages_Roles) }
             });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
