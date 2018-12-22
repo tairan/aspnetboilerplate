@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Tairan Wang",
+  "classifications": [ "Web", "Web/WebAPI" ],
+  "identity": "AspNetBoilerplate.Template.Vuejs",
+  "name": "Based on ASP.NET Boilerplate (ABP) application framework.",
+  "shortName": "abpweb-vue"
+}
