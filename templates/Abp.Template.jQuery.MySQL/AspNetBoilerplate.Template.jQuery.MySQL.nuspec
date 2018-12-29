@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>AspNetBoilerplate.Template.MySQL.jQuery</id>
+    <id>AspNetBoilerplate.Template.jQuery.MySQL</id>
     <version>0.1.0</version>
     <description>
       ASP.NET Boilerplate is a general purpose application framework specially designed for new modern web applications. It uses already familiar tools and implements best practices around them to provide you a SOLID development experience.

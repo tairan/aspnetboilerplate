@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Tairan Wang",
   "classifications": [ "Web", "Web/WebAPI" ],
-  "identity": "AspNetBoilerplate.Template.MySQL.jQuery",
+  "identity": "AspNetBoilerplate.Template.jQuery.MySQL",
   "name": "Based on ASP.NET Boilerplate (ABP) application framework.",
-  "shortName": "abpweb-mysql-jquery"
+  "shortName": "abpweb-jquery-mysql"
 }
